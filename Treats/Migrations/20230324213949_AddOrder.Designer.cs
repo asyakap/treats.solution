@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Treats.Models;
 
@@ -10,9 +11,10 @@ using Treats.Models;
 namespace Treats.Migrations
 {
     [DbContext(typeof(TreatsContext))]
-    partial class TreatsContextModelSnapshot : ModelSnapshot
+    [Migration("20230324213949_AddOrder")]
+    partial class AddOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,29 +254,6 @@ namespace Treats.Migrations
                     b.ToTable("FlavorTreats");
                 });
 
-            modelBuilder.Entity("Treats.Models.Order", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Orders");
-                });
-
             modelBuilder.Entity("Treats.Models.Treat", b =>
                 {
                     b.Property<int>("TreatId")
@@ -372,15 +351,6 @@ namespace Treats.Migrations
                     b.Navigation("Flavor");
 
                     b.Navigation("Treat");
-                });
-
-            modelBuilder.Entity("Treats.Models.Order", b =>
-                {
-                    b.HasOne("Treats.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Treats.Models.Treat", b =>
