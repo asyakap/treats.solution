@@ -4,16 +4,17 @@
 
 @model Treats.Models.Order
 
-<h2>Edit this Order</h2>
-<h4>@Html.DisplayFor(model => model.Date)</h4>
+<h2>Edit this Order:</h4>
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.OrderId)
 
   @Html.LabelFor(model => model.Date)
   @Html.EditorFor(model => model.Date, new { placeholder = "MM/DD/YYYY" })
-  @Html.LabelFor(model => model.Details, "Order Details")
+  @Html.LabelFor(model => model.Details)
   @Html.EditorFor(model => model.Details)
 
   <input type="submit" value="Save" />
 }
+<p>@Html.ActionLink("Back to Orders List", "Index")</p>
+
