@@ -57,7 +57,7 @@ A website of a Pierre's Sweet and Savory Treats using MySQL and EF Core. User ca
 
 ## Known Bugs
 
-* No known bugs
+* Update role feature doesn't function
 
 ## License
 Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!

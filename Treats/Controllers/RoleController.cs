@@ -60,7 +60,7 @@ namespace Identity.Controllers
             });
         }
 
-                [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Update(RoleModification model)
         {
             IdentityResult result;
