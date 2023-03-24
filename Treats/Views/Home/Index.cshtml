@@ -38,6 +38,7 @@
 @if (User.Identity.IsAuthenticated)
 {
   <p>@Html.ActionLink("Manage treats", "Index", "Treats") | @Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
+  <p>@Html.ActionLink("Manage orders", "Index", "Orders")</p>
 }
 else 
 {

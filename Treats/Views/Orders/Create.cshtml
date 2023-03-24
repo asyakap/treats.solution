@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Treats.Models.Order
+
+<h4>Add a new order</h4>
+
+<p>@Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Date, "Order Date")
+  @Html.TextBoxFor(model => model.Date)
+  @Html.LabelFor(model => model.Details, "Order Details")
+  @Html.TextBoxFor(model => model.Details)
+
+  <input type="submit" value="Add new treat" />
+}

@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Treats.Models;
+
+<hr>
+
+  <h4>Orders for @User.Identity.Name</h4>
+  @if (Model["orders"].Length == 0)
+  {
+    <p>No orders have been added yet</p>
+  } 
+
+  <ul>
+    @foreach (Order order in Model["orders"])
+      {
+        <li>@Html.ActionLink(@order.Date, "Details", "Recipes", new { id = @order.OrderId})</li>
+      }
+  </ul>
+
+
+  <p>@Html.ActionLink("Create an order", "Create", "Order")</p>
+
+
+

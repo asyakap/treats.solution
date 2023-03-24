@@ -22,7 +22,45 @@ namespace Orders.Controllers
       _userManager = userManager;
       _db = db;
     }
-    
+
+    public async Task<ActionResult> Index()
+    {
+      Dictionary<string, object[]> model = new Dictionary<string, object[]>();
+  
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      if (currentUser != null)
+      {
+        Order[] orders = _db.Orders
+                        .Where(entry => entry.User.Id == currentUser.Id)
+                        .ToArray();
+        model.Add("orders", orders);
+      }
+      return View(model);
+    }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Create(Order order)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(order);
+      }
+      else
+      {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        order.User = currentUser;
+        _db.Orders.Add(order);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+    }
     
   }
 
