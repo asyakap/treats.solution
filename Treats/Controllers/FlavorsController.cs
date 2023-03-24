@@ -11,7 +11,6 @@ using System.Security.Claims;
 
 namespace Treats.Controllers
 {
-  [Authorize]
   public class FlavorsController : Controller
   {
     private readonly TreatsContext _db;

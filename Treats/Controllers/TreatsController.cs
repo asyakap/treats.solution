@@ -12,7 +12,6 @@ using System;
 
 namespace Treats.Controllers
 {
-  [Authorize]
   public class TreatsController : Controller
   {
     private readonly TreatsContext _db;
@@ -25,10 +24,12 @@ namespace Treats.Controllers
     }
     
     
-    public async Task<ActionResult> Index()
+   // public async Task<ActionResult> Index()
+   public ActionResult Index()
     {
-      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      //string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      //ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      
       List<Treat> model = _db.Treats.ToList();
       return View(model);
     }
