@@ -15,11 +15,11 @@
 }
 else
 {
-  <h4>This recipe has the following flavors:</h4>
+  <h6>This recipe has the following flavors:</h6>
   <ul>
   @foreach (FlavorTreat join in Model.JoinEntities)
     {
-      <li>Flavor: @join.Flavor.Name</li>
+      <li>@join.Flavor.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Treats"))
       {
         @Html.Hidden("joinId", @join.FlavorTreatId)
