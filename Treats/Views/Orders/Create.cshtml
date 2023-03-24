@@ -11,10 +11,10 @@
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Date, "Order Date")
-  @Html.TextBoxFor(model => model.Date)
+  @Html.LabelFor(model => model.Date)
+  @Html.TextBoxFor(model => model.Date, new { placeholder = "MM/DD/YYYY" })
   @Html.LabelFor(model => model.Details, "Order Details")
   @Html.TextBoxFor(model => model.Details)
 
-  <input type="submit" value="Add new treat" />
+  <input type="submit" value="Add new order" />
 }

@@ -14,13 +14,13 @@
 
   <ul>
     @foreach (Order order in Model["orders"])
-      {
-        <li>@Html.ActionLink(@order.Date, "Details", "Recipes", new { id = @order.OrderId})</li>
-      }
+    {
+      <li>@Html.ActionLink(@order.Details, "Details", "Orders", new { id = @order.OrderId})</li>
+    }
   </ul>
 
 
-  <p>@Html.ActionLink("Create an order", "Create", "Order")</p>
+  <p>@Html.ActionLink("Create an order", "Create", "Orders")</p>
 
 
 
