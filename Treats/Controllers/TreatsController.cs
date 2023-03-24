@@ -22,14 +22,13 @@ namespace Treats.Controllers
       _userManager = userManager;
       _db = db;
     }
-    
-    
-   // public async Task<ActionResult> Index()
-   public ActionResult Index()
+
+
+    public async Task<ActionResult> Index()
     {
-      //string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      //ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+
       List<Treat> model = _db.Treats.ToList();
       return View(model);
     }
@@ -108,9 +107,9 @@ namespace Treats.Controllers
     [HttpPost]
     public ActionResult AddFlavor(Treat treat, int flavorId)
     {
-      #nullable enable
+#nullable enable
       FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
-      #nullable disable
+#nullable disable
       if (joinEntity == null && flavorId != 0)
       {
         _db.FlavorTreats.Add(new FlavorTreat() { FlavorId = flavorId, TreatId = treat.TreatId });

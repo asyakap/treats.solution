@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Treats.Models
+@model Treats.Models.Order
+
+<h2>Order Details</h2>
+<hr />
+<h5>Date: @Html.DisplayFor(model => model.Date)</h5>
+<h5>Details: @Html.DisplayFor(model => model.Details)</h5>
+
+<p>@Html.ActionLink("Edit Order", "Edit")</p>
+<p>@Html.ActionLink("Back to Orders List", "Index")</p>

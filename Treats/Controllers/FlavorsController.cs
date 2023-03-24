@@ -33,7 +33,7 @@ namespace Treats.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+      //ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
       return View();
     }
 
@@ -42,7 +42,7 @@ namespace Treats.Controllers
     {
       if (!ModelState.IsValid)
       {
-        ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+        //ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
         return View(flavor);
       }
       else
@@ -68,7 +68,7 @@ namespace Treats.Controllers
     public ActionResult Edit(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+      //ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
       return View(thisFlavor);
     }
 

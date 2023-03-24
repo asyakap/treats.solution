@@ -61,6 +61,29 @@ namespace Orders.Controllers
         return RedirectToAction("Index");
       }
     }
+
+    public ActionResult Details(int id)
+    {
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ViewBag.CurrentUser = userId;
+
+      Order thisOrder = _db.Orders.FirstOrDefault(order => order.OrderId == id);
+      return View(thisOrder);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      Order thisOrder = _db.Orders.FirstOrDefault(order => order.OrderId == id);
+      return View(thisOrder);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Order order)
+    {
+      _db.Orders.Update(order);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
     
   }
 
