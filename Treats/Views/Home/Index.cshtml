@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Treats.Models;
+
+<h1>Welcome to the Pierre's Sweet and Savory Treats</h1>
+
+<hr>
+
+  <h4>Treats</h4>
+  @if (Model["treats"].Length == 0)
+  {
+    <p>No treats have been added yet</p>
+  } 
+  <ul>
+    @foreach (Treat treat in Model["treats"])
+    {
+      <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
+    }
+  </ul>
+
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to manage your treats.</p>
+
+
+
+<hr>
+
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("Manage treats", "Index", "Treats") | @Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
+}
+
+<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>

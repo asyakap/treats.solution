@@ -20,21 +20,13 @@ namespace Treats.Controllers
       }
       
     [HttpGet("/")]
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
+      Treat[] treats = _db.Treats.ToArray(); 
+      Flavor[] flavors = _db.Flavors.ToArray();
       Dictionary<string, object[]> model = new Dictionary<string, object[]>();
-      
-      //Treat logic
-      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      ViewBag.CurrentUser = userId;
-      if (currentUser != null)
-      {
-        Treat[] treats = _db.Treats
-                        .Where(entry => entry.User.Id == currentUser.Id)
-                        .ToArray();
-        model.Add("treats", treats);
-      }
+      model.Add("treats", treats);
+      model.Add("flavors", flavors);
       return View(model);
     }
   }
