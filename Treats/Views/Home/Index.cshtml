@@ -34,15 +34,14 @@
 
 <hr>
 
-  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to manage your treats and flavors.</p>
-
-
-
-<hr>
 
 @if (User.Identity.IsAuthenticated)
 {
   <p>@Html.ActionLink("Manage treats", "Index", "Treats") | @Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
+}
+else 
+{
+    <p>Please @Html.ActionLink("log in", "LogIn", "Account") to manage treats and flavors.</p>
 }
 
 <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>

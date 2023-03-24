@@ -24,6 +24,7 @@ namespace Treats.Controllers
       _db = db;
     }
     
+    
     public async Task<ActionResult> Index()
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
