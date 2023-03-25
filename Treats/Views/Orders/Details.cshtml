@@ -10,5 +10,5 @@
 <h5>Date: @Html.DisplayFor(model => model.Date)</h5>
 <h5>Details: @Html.DisplayFor(model => model.Details)</h5>
 
-<p>@Html.ActionLink("Edit Order", "Edit")</p>
+<p>@Html.ActionLink("Edit Order", "Edit", new { id = Model.OrderId })</p>
 <p>@Html.ActionLink("Back to Orders List", "Index")</p>

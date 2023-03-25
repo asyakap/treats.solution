@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using System;
 
-namespace Orders.Controllers
+namespace Treats.Controllers
 {
   public class OrdersController : Controller
   {
